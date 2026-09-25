@@ -1,0 +1,14 @@
+fastapi
+uvicorn[standard]
+sqlalchemy
+psycopg[binary]
+geoalchemy2
+shapely
+pyproj
+geopandas
+pandas
+numpy
+requests
+python-multipart
+beautifulsoup4
+lxml

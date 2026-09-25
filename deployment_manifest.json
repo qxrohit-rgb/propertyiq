@@ -1,0 +1,23 @@
+{
+  "project": "PropertyIQ",
+  "module": "PROPERTYIQ-V40.12-FINAL-PRODUCTION-DEPLOYMENT",
+  "main_py": {
+    "path": "main.py",
+    "bytes": 977550,
+    "sha256": "79e4ad447b75a003150fefa8425fabfea2f2febc587fa1028009102af30579df"
+  },
+  "runtime": {
+    "framework": "FastAPI",
+    "server": "Uvicorn",
+    "python": "3.13",
+    "database": "PostgreSQL",
+    "spatial_database": "PostGIS",
+    "provider": "Supabase"
+  },
+  "required_environment_variables": [
+    "DATABASE_URL"
+  ],
+  "database_credentials_embedded": false,
+  "database_modified_by_packaging": false,
+  "source_validated": true
+}

@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: propertyiq
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /api/v1/health
+    envVars:
+      - key: DATABASE_URL
+        sync: false
