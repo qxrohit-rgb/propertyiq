@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from fastapi import FastAPI
+
 # ============================================================
 # PROPERTYIQ — PRODUCTION APPLICATION
 # ============================================================
@@ -2105,8 +2107,8 @@ def _propertyiq_autobootstrap():
 if (
     "app" not in globals()
     or "engine" not in globals()
-    or app is None
-    or engine is None
+    or globals().get("app") is None
+    or globals().get("engine") is None
 ):
 
     try:
@@ -2122,6 +2124,17 @@ if (
             "Check the database password and connection."
         ) from exc
 
+
+# ------------------------------------------------------------
+# Production FastAPI application
+# ------------------------------------------------------------
+
+if "app" not in globals() or app is None:
+    app = FastAPI(
+        title="PropertyIQ",
+        description="Property Intelligence Platform",
+        version="1.0"
+    )
 
 # Install V17 automatically.
 try:
@@ -3640,7 +3653,6 @@ def _v18_autobootstrap():
         and engine is not None
     ):
         if "app" not in globals() or app is None:
-            from fastapi import FastAPI
             app = FastAPI(
                 title="PropertyIQ",
                 version="V18"
@@ -3751,7 +3763,6 @@ def _v18_autobootstrap():
 
     if "app" not in globals() or app is None:
 
-        from fastapi import FastAPI
 
         app = FastAPI(
             title="PropertyIQ",
@@ -4765,7 +4776,6 @@ def _v183_bootstrap():
         and engine is not None
     ):
         if "app" not in globals() or app is None:
-            from fastapi import FastAPI
             app = FastAPI(
                 title="PropertyIQ",
                 version="V18.3"
@@ -4864,7 +4874,6 @@ def _v183_bootstrap():
         ).scalar()
 
     if "app" not in globals() or app is None:
-        from fastapi import FastAPI
         app = FastAPI(
             title="PropertyIQ",
             version="V18.3"
@@ -5502,7 +5511,6 @@ def _v19_bootstrap():
 
     if "engine" in globals() and engine is not None:
         if "app" not in globals() or app is None:
-            from fastapi import FastAPI
             app = FastAPI(title="PropertyIQ", version="V19")
         return "existing-engine"
 
@@ -5537,7 +5545,6 @@ def _v19_bootstrap():
         conn.execute(text("SELECT PostGIS_Full_Version()")).scalar()
 
     if "app" not in globals() or app is None:
-        from fastapi import FastAPI
         app=FastAPI(title="PropertyIQ",version="V19")
 
     return "autobootstrapped"
@@ -5616,7 +5623,6 @@ def _v20_bootstrap():
         )
 
     if "app" not in globals() or app is None:
-        from fastapi import FastAPI
         app = FastAPI(title="PropertyIQ", version="V20")
 
     return "existing"
@@ -17122,7 +17128,6 @@ def _ensure_fastapi():
 
 _ensure_fastapi()
 
-from fastapi import FastAPI
 from fastapi.responses import HTMLResponse, JSONResponse
 from sqlalchemy import text
 
@@ -20892,7 +20897,6 @@ except Exception:
         "psycopg[binary]"
     ])
 
-from fastapi import FastAPI
 from fastapi.responses import HTMLResponse, JSONResponse
 from sqlalchemy import text
 
@@ -23845,7 +23849,6 @@ except Exception:
         "psycopg[binary]"
     ])
 
-from fastapi import FastAPI
 from fastapi.responses import HTMLResponse, JSONResponse
 from sqlalchemy import text
 
@@ -26646,7 +26649,6 @@ except Exception:
         "psycopg[binary]"
     ])
 
-from fastapi import FastAPI
 from fastapi.responses import HTMLResponse, JSONResponse
 from sqlalchemy import text
 
@@ -29424,7 +29426,6 @@ def _v31_bootstrap_app():
     if app_obj is not None:
         return app_obj
 
-    from fastapi import FastAPI
 
     app_obj = FastAPI(
         title="PropertyIQ",
@@ -31378,7 +31379,6 @@ if "engine" not in globals() or engine is None:
     )
 
 if "app" not in globals() or app is None:
-    from fastapi import FastAPI
     app = FastAPI(
         title="PropertyIQ",
         version="V32"
@@ -33052,7 +33052,6 @@ if "engine" not in globals() or engine is None:
     )
 
 if "app" not in globals() or app is None:
-    from fastapi import FastAPI
     app = FastAPI(
         title="PropertyIQ",
         version="V33"
@@ -34913,7 +34912,6 @@ if "engine" not in globals() or engine is None:
 
 if "app" not in globals() or app is None:
 
-    from fastapi import FastAPI
 
     app = FastAPI(
         title="PropertyIQ",
@@ -36874,7 +36872,6 @@ if "engine" not in globals() or engine is None:
 
 if "app" not in globals() or app is None:
 
-    from fastapi import FastAPI
 
     app = FastAPI(
         title="PropertyIQ",
@@ -39067,7 +39064,6 @@ if "engine" not in globals() or engine is None:
 
 if "app" not in globals() or app is None:
 
-    from fastapi import FastAPI
 
     app = FastAPI(
         title="PropertyIQ",
@@ -41221,7 +41217,6 @@ if "engine" not in globals() or engine is None:
 
 if "app" not in globals() or app is None:
 
-    from fastapi import FastAPI
 
     app = FastAPI(
         title="PropertyIQ",
@@ -45289,7 +45284,6 @@ _v39_install("fastapi")
 _v39_install("sqlalchemy")
 _v39_install("psycopg[binary]", "psycopg")
 
-from fastapi import FastAPI
 from fastapi.responses import HTMLResponse
 from sqlalchemy import text
 
@@ -47422,7 +47416,6 @@ import importlib
 import subprocess
 import html
 
-from fastapi import FastAPI
 from fastapi.responses import HTMLResponse, RedirectResponse
 
 
